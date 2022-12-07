@@ -145,7 +145,7 @@ const busquedaBumeran = async (search, location = '') => {
     // }
     stop++;
   }
-  console.log('done');
+  console.log('Busqueda Finalizada');
   // process.exit(13)//fix this
 };
 

@@ -4,7 +4,6 @@ const express = require('express');
 const { getAllJobs } = require('../controllers/job.controller');
 
 // Middlewares
-
 const jobsRouter = express.Router();
 
 jobsRouter.get('/', getAllJobs);

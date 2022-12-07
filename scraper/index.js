@@ -42,4 +42,4 @@ const cronJobScrapper = () => {
 
 module.exports = { cronJobScrapper };
 
-cronJobScrapper()
+//cronJobScrapper()

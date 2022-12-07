@@ -7,6 +7,7 @@ const { AppError } = require('../utils/appError.util');
 
 
 const getAllJobs = catchAsync(async (req, res, next) => {
+  console.log("Getting Jobs Database")
   const jobs = await Job.findAll();
 
   res.status(200).json({
