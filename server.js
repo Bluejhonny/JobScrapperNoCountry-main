@@ -20,7 +20,6 @@ const startServer = async () => {
     initModels();
 
     await db.sync();
-
     await db.sync({force: true})
 
     // Set server to listen
@@ -30,8 +29,6 @@ const startServer = async () => {
       cronJobScrapper()
       console.log('Express app running!');   
     });
-
-    app.use("/",jobsRouter())
 
   } catch (error) {
     console.log("Error at Server Starting");
