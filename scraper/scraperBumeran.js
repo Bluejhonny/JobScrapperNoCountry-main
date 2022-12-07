@@ -10,6 +10,7 @@ const busquedaBumeran = async (search, location = '') => {
     const browser = await puppeteer.launch({
       headless: true,
       defaultViewport: false,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
       //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
       //dumpio: true
     });
@@ -115,12 +116,13 @@ const busquedaBumeran = async (search, location = '') => {
       if (name == 'Null') {
         continue;
       } else {
+        
         items.push({ name, company, location, type, links, description });
         listLinks.push(links);
       }
     }
-
-    browser.close();
+    console.log(items)
+    //browser.close();
 
     saveJobs(listLinks, items);
     console.log('Jobs saved');
@@ -148,3 +150,5 @@ const busquedaBumeran = async (search, location = '') => {
 };
 
 module.exports = { busquedaBumeran };
+
+//busquedaBumeran('backend', '')

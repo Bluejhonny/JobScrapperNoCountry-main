@@ -9,7 +9,12 @@ function waitFor(miliseconds) {
 
 const busquedaComputrabajo = async (search, location = '') => {
   console.log(`Searching for ${search} in computrabajo`);
-  const browser = await puppeteer.launch({ headless: true, timeout: 0 });
+  const browser = await puppeteer.launch({ 
+    headless: true, 
+    timeout: 0,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(0);
   page.header;
@@ -103,7 +108,7 @@ const busquedaComputrabajo = async (search, location = '') => {
 
     info.push(tempInfo);
   }
-
+  console.log(info)
   //Guardar Trabajos a la base de datos
   await saveJobs(listLinks, info);
   console.log('Jobs saved to the database');
