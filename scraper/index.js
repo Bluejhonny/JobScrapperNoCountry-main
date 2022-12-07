@@ -3,10 +3,13 @@ const { busquedaComputrabajo } = require('./scraperComputrabajo');
 const { busquedaBumeran } = require('./scraperBumeran');
 
 const cronJobScrapper = () => {
+  var hours = (new Date()).getHours();
+  var minutes = (new Date()).getMinutes();
+  console.log(hours + " : " + minutes);
   console.log('Scraper Start with Cron')
   new cron.CronJob(
     //'5 14 1-31 0-11 0-6',
-    '23 15 1-31 0-11 0-6',
+    '56 16 1-31 0-11 0-6',
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());
