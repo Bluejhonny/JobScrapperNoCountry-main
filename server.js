@@ -31,10 +31,8 @@ const startServer = async () => {
       console.log('Express app running!');   
     });
 
-    app.use("/", (req, res) => {
-      console.log("GET jobs")
-      jobsRouter()
-      })
+    app.use("/",jobsRouter())
+
   } catch (error) {
     console.log("Error at Server Starting");
   }
