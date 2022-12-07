@@ -25,7 +25,7 @@ const startServer = async () => {
     // Set server to listen
     const PORT = 4000;
 
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || PORT, () => {
       console.log('Express app running!');
       cronJobScrapper()
     });
