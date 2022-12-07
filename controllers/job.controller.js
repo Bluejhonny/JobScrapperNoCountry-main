@@ -8,12 +8,18 @@ const { AppError } = require('../utils/appError.util');
 
 const getAllJobs = catchAsync(async (req, res, next) => {
   console.log("Getting Jobs Database")
-  const jobs = await Job.findAll();
+  try {
+    const jobs = await Job.findAll();
 
-  res.status(200).json({
-    status: 'succes',
-    data: { jobs },
-  });
+    res.status(200).json({
+      status: 'succes',
+      data: { jobs },
+    });
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("Internal Server error Occured at GET Jobs")
+  }
 });
 
 const saveJobs = async (links, jobs) => {

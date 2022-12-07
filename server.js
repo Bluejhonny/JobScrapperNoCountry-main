@@ -27,14 +27,16 @@ const startServer = async () => {
     const PORT = 4000;
 
     app.listen(process.env.PORT || PORT, () => {
-      console.log('Express app running!');
       cronJobScrapper()
+      console.log('Express app running!');   
     });
-    app.use("/", jobsRouter)
 
-
+    app.use("/", (req, res) => {
+      console.log("GET jobs")
+      jobsRouter()
+      })
   } catch (error) {
-    console.log(error);
+    console.log("Error at Server Starting");
   }
 };
 
