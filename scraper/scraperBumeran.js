@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
-const fs = require('fs');
-const crypto = require('crypto');
+//const fs = require('fs');
+//const crypto = require('crypto');
 const { saveJobs } = require('../controllers/job.controller');
 
 const busquedaBumeran = async (search, location = '') => {
@@ -85,7 +85,7 @@ const busquedaBumeran = async (search, location = '') => {
       } catch (error) { }
 
       //entrar a los links y extraer la descripcion
-      console.log("getting description")
+      console.log("getting description of -----> " + links)
       const browserDesc = await puppeteer.launch({
         headless: true,
         timeout: 0,
@@ -127,8 +127,8 @@ const busquedaBumeran = async (search, location = '') => {
         listLinks.push(links);
       }
     }
-    console.log(items)
-    //browser.close();
+    console.log(items.name)
+    ///browser.close();
 
     saveJobs(listLinks, items);
     console.log('Jobs saved');
