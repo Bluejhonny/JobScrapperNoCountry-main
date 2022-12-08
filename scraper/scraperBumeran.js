@@ -9,18 +9,21 @@ const busquedaBumeran = async (search, location = '') => {
   while (stop < 1) {
     const browser = await puppeteer.launch({
       headless: true,
-      defaultViewport: false,
-      //args: ['--no-sandbox', '--disable-setuid-sandbox']
+      timeout: 0,
+      //defaultViewport: false,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
       //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
       //dumpio: true
     });
     var url = 'https://www.bumeran.com.ve/empleos-busqueda-' + search + '.html';
 
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
+
     await page.goto(url, {
-      //waitUntil: 'load',
+      waitUntil: 'load',
       // Remove the timeout
-      //timeout: 0,
+      timeout: 0,
     });
     // Buscar en la pagina principal la lista de los trabajos
     const productHandles = await page.$$(`[id="listado-avisos"] > div`);
@@ -44,14 +47,14 @@ const busquedaBumeran = async (search, location = '') => {
           (el) => el.querySelector('h2').textContent,
           productHandle
         );
-      } catch (error) {}
+      } catch (error) { }
 
       try {
         company = await page.evaluate(
           (el) => el.querySelector('h3').textContent,
           productHandle
         );
-      } catch (error) {}
+      } catch (error) { }
 
       try {
         location = await page.evaluate(
@@ -61,7 +64,7 @@ const busquedaBumeran = async (search, location = '') => {
             ).textContent,
           productHandle
         );
-      } catch (error) {}
+      } catch (error) { }
 
       try {
         type = await page.evaluate(
@@ -71,7 +74,7 @@ const busquedaBumeran = async (search, location = '') => {
             ).textContent,
           productHandle
         );
-      } catch (error) {}
+      } catch (error) { }
 
       try {
         const link = await page.evaluate(
@@ -79,7 +82,7 @@ const busquedaBumeran = async (search, location = '') => {
           productHandle
         );
         links = 'https://www.bumeran.com.ve' + link;
-      } catch (error) {}
+      } catch (error) { }
 
       //entrar a los links y extraer la descripcion
 
@@ -112,12 +115,12 @@ const busquedaBumeran = async (search, location = '') => {
           }, resultsSelector);
           description = description[0];
         }
-      } catch (error) {}
+      } catch (error) { }
 
       if (name == 'Null') {
         continue;
       } else {
-        
+
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
       }
