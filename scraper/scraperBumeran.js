@@ -88,11 +88,13 @@ const busquedaBumeran = async (search, location = '') => {
       console.log("getting description")
       const browserDesc = await puppeteer.launch({
         headless: true,
+        timeout: 0,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
         //defaultViewport: false,
         //dumpio: true
       });
       const pageDesc = await browserDesc.newPage();
-
+      await pageDesc.setDefaultNavigationTimeout(0);
       try {
         if (links == 'Null') {
           description = 'Null';
