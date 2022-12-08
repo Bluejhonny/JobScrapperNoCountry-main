@@ -96,13 +96,14 @@ const busquedaComputrabajo = async (search, location = '') => {
       const desc = document.querySelector(
         '[div-link="oferta"] p.mbB'
       ).innerHTML;
-
+      let source = 'CompuTrabajo'
       return {
         name,
         company,
         location,
         contract,
         description: desc,
+        source
       };
     });
 

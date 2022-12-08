@@ -35,6 +35,7 @@ const busquedaBumeran = async (search, location = '') => {
       let type = 'Null';
       let links = 'Null';
       let description = 'Null';
+      let source = 'Bumeran'
 
       // pass the single handle below
 
@@ -117,7 +118,7 @@ const busquedaBumeran = async (search, location = '') => {
         continue;
       } else {
         
-        items.push({ name, company, location, type, links, description });
+        items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
       }
     }
