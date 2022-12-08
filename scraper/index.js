@@ -10,7 +10,7 @@ const cronJobScrapper = () => {
   console.log('Scraper Start with Cron')
   new cron.CronJob(
     //'55 14 1-31 0-11 0-6',
-    '50 17 1-31 0-11 0-6',
+    '17 18 1-31 0-11 0-6',
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());
