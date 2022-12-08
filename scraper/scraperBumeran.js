@@ -10,7 +10,7 @@ const busquedaBumeran = async (search, location = '') => {
     const browser = await puppeteer.launch({
       headless: true,
       defaultViewport: false,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      //args: ['--no-sandbox', '--disable-setuid-sandbox']
       //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
       //dumpio: true
     });
@@ -18,9 +18,9 @@ const busquedaBumeran = async (search, location = '') => {
 
     const page = await browser.newPage();
     await page.goto(url, {
-      waitUntil: 'load',
+      //waitUntil: 'load',
       // Remove the timeout
-      timeout: 0,
+      //timeout: 0,
     });
     // Buscar en la pagina principal la lista de los trabajos
     const productHandles = await page.$$(`[id="listado-avisos"] > div`);
