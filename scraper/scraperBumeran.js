@@ -89,7 +89,7 @@ const busquedaBumeran = async (search, location = '') => {
       const browserDesc = await puppeteer.launch({
         headless: true,
         timeout: 0,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
         //defaultViewport: false,
         dumpio: true
       });
