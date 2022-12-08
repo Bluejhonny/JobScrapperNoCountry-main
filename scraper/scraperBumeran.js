@@ -91,7 +91,7 @@ const busquedaBumeran = async (search, location = '') => {
         timeout: 0,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
         //defaultViewport: false,
-        //dumpio: true
+        dumpio: true
       });
       const pageDesc = await browserDesc.newPage();
       await pageDesc.setDefaultNavigationTimeout(0);
