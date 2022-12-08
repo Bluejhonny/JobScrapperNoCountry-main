@@ -85,10 +85,10 @@ const busquedaBumeran = async (search, location = '') => {
       } catch (error) { }
 
       //entrar a los links y extraer la descripcion
-
+      console.log("getting description")
       const browserDesc = await puppeteer.launch({
         headless: true,
-        defaultViewport: false,
+        //defaultViewport: false,
         //dumpio: true
       });
       const pageDesc = await browserDesc.newPage();
