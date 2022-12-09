@@ -91,10 +91,12 @@ const busquedaBumeran = async (search, location = '') => {
         timeout: 0,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         //defaultViewport: false,
-        dumpio: true
+        //dumpio: true
       });
+      console.log("next 2")
       const pageDesc = await browserDesc.newPage();
       await pageDesc.setDefaultNavigationTimeout(0);
+      console.log("next 3")
       try {
         if (links == 'Null') {
           description = 'Null';
@@ -118,13 +120,14 @@ const busquedaBumeran = async (search, location = '') => {
           description = description[0];
         }
       } catch (error) { }
-
+      console.log("next 4")
       if (name == 'Null') {
         continue;
       } else {
 
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
+        console.log("next 5")
       }
     }
     console.log(items.name)
