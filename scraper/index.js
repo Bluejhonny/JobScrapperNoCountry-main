@@ -9,16 +9,14 @@ const cronJobScrapper = () => {
   console.log(hours + " : " + minutes);
   console.log('Scraper Start with Cron')
   new cron.CronJob(
-    '00 03 1-31 0-11 0-6',
+    '00 04 1-31 0-11 0-6',
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());
-      await busquedaBumeran('backend', '');
-      await busquedaBumeran('frontend', '');
-      await busquedaBumeran('fullstack', '');
       await busquedaComputrabajo('frontend', '');
       await busquedaComputrabajo('backend', '');
-      await busquedaComputrabajo('fullstack', '');
+      await busquedaBumeran('backend', '');
+      await busquedaBumeran('frontend', '');
 
       console.log('Finished');
       console.log(new Date().toLocaleString());

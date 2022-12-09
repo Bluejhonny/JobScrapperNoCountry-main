@@ -34,7 +34,7 @@ const busquedaBumeran = async (search, location = '') => {
     for (const productHandle of productHandles) {
       let name = 'Null';
       let company = 'Null';
-      let location = 'Null';
+      let location ='Venezuela';
       let type = 'Null';
       let links = 'Null';
       let description = 'Null';
