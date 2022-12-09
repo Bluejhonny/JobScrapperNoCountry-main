@@ -93,10 +93,8 @@ const busquedaBumeran = async (search, location = '') => {
         //defaultViewport: false,
         //dumpio: true
       });
-      console.log("next 2")
       const pageDesc = await browserDesc.newPage();
       await pageDesc.setDefaultNavigationTimeout(0);
-      console.log("next 3")
       try {
         if (links == 'Null') {
           description = 'Null';
@@ -120,7 +118,7 @@ const busquedaBumeran = async (search, location = '') => {
           description = description[0];
         }
       } catch (error) { }
-      console.log("next 4")
+      console.log("saving Job")
       if (name == 'Null') {
         continue;
       } else {
@@ -128,7 +126,7 @@ const busquedaBumeran = async (search, location = '') => {
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
         browserDesc.close()
-        console.log("next 5")
+        console.log("next")
       }
     }
     console.log(items.name)
@@ -160,5 +158,4 @@ const busquedaBumeran = async (search, location = '') => {
 };
 
 module.exports = { busquedaBumeran };
-
 //busquedaBumeran('backend', '')

@@ -9,18 +9,16 @@ const cronJobScrapper = () => {
   console.log(hours + " : " + minutes);
   console.log('Scraper Start with Cron')
   new cron.CronJob(
-    //'55 14 1-31 0-11 0-6',
-    '15 02 1-31 0-11 0-6',
+    '00 03 1-31 0-11 0-6',
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());
-      // busqueda('desarrollador backend trainee', '');
       await busquedaBumeran('backend', '');
-      // await busquedaBumeran('frontend', '');
-      // await busquedaBumeran('fullstack', '');
-      // await busquedaComputrabajo('frontend', '');
-      // await busquedaComputrabajo('backend', '');
-      // await busquedaComputrabajo('fullstack', '');
+      await busquedaBumeran('frontend', '');
+      await busquedaBumeran('fullstack', '');
+      await busquedaComputrabajo('frontend', '');
+      await busquedaComputrabajo('backend', '');
+      await busquedaComputrabajo('fullstack', '');
 
       console.log('Finished');
       console.log(new Date().toLocaleString());
@@ -29,15 +27,6 @@ const cronJobScrapper = () => {
     true
   );
 };
-
-// const cronJobScrapper = async () => {
-//   console.log('Ejecutando Bumeran...');
-//   console.log(new Date().toLocaleString());
-//   await busquedaBumeran('backend', '');
-//   // await busquedaComputrabajo('desarrollador frontend', '');
-//   console.log('Finished');
-//   console.log(new Date().toLocaleString());
-// };
 
 module.exports = { cronJobScrapper };
 
