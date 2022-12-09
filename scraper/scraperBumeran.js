@@ -127,6 +127,7 @@ const busquedaBumeran = async (search, location = '') => {
 
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
+        browserDesc.close()
         console.log("next 5")
       }
     }
