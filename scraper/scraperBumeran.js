@@ -100,9 +100,9 @@ const busquedaBumeran = async (search, location = '') => {
           description = 'Null';
         } else {
           pageDesc.goto(links, {
-            waitUntil: 'load',
+            //waitUntil: 'load',
             // Remove the timeout
-            timeout: 0,
+            //timeout: 0,
           });
           const resultsSelector = `[id="section-detalle"] > div:nth-child(2)`;
           await pageDesc.waitForSelector(resultsSelector);
@@ -128,7 +128,7 @@ const busquedaBumeran = async (search, location = '') => {
       }
     }
     console.log(items.name)
-    ///browser.close();
+    browser.close();
 
     saveJobs(listLinks, items);
     console.log('Jobs saved');
