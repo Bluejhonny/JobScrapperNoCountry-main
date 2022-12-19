@@ -1,8 +1,8 @@
 #### JobScrapperNoCountry-main
 ## Backend for NoCountry Project ScrapJob
 This repository contains the backend for the ScrapJob project made for NoContry.
-Repository Link --- > https://github.com/No-Country/s5-13-t-pern
-NoCountry ---- > https://www.nocountry.tech/ 
+- Repository Link --- > https://github.com/No-Country/s5-13-t-pern
+- NoCountry ---- > https://www.nocountry.tech/ 
 
 
 ## *ScrapJob*
