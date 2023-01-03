@@ -12,7 +12,9 @@ const { globalErrorHandler } = require('./controllers/error.controller');
 const app = express();
 
 //enable cors policy
-app.use(cors())
+app.use(cors({
+	origin: "https://scrap-job-front-deploy.vercel.app"
+}))
 
 // Enable Express app to receive JSON data
 app.use(express.json());
