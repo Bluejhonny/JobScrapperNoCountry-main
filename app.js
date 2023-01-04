@@ -13,7 +13,7 @@ const app = express();
 
 //enable cors policy
 app.use(cors({ 
-	origin: "https://scrap-job-front-deploy.vercel.app"
+	origin: "*"
 }))
 
 // Enable Express app to receive JSON data
