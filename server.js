@@ -17,8 +17,9 @@ const startServer = async () => {
     await db.authenticate();
 
     // Establish the relations between models
+    console.log("Starting Models")
     initModels();
-
+    console.log("Starting DB connection")
     await db.sync();
     await db.sync({force: true})
 
@@ -26,6 +27,7 @@ const startServer = async () => {
     const PORT = 4000;
 
     app.listen(process.env.PORT || PORT, () => {
+      console.log("Starting Cron")
       cronJobScrapper()
       console.log('Express app running!');   
     });
