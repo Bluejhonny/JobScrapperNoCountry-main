@@ -12,8 +12,8 @@ const { globalErrorHandler } = require('./controllers/error.controller');
 const app = express();
 
 //enable cors policy
-app.use(cors())
-app.options('/api/v1/jobs', cors()) // enable pre-flight request for DELETE request
+//app.use(cors())
+app.options('*', cors()) // enable pre-flight request for all request
 
 // Enable Express app to receive JSON data
 app.use(express.json());
