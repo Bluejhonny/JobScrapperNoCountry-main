@@ -14,6 +14,7 @@ dotenv.config({ path: './config.env' });
 
 const startServer = async () => {
   try {
+    console.log("Starting DB authentication")
     await db.authenticate();
 
     // Establish the relations between models
