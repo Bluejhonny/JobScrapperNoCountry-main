@@ -19,7 +19,7 @@ const cronJobScrapper = () => {
         await busquedaBumeran('backend', '');
         await busquedaBumeran('frontend', '');
       } catch (error) {
-        console.log("Scraper Internal Error")
+        console.log("Scraper Internal Error...")
       }
       console.log('Finished');
       console.log(new Date().toLocaleString());
