@@ -13,11 +13,14 @@ const cronJobScrapper = () => {
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());
-      await busquedaComputrabajo('frontend', '');
-      await busquedaComputrabajo('backend', '');
-      await busquedaBumeran('backend', '');
-      await busquedaBumeran('frontend', '');
-
+      try {
+        await busquedaComputrabajo('frontend', '');
+        await busquedaComputrabajo('backend', '');
+        await busquedaBumeran('backend', '');
+        await busquedaBumeran('frontend', '');
+      } catch (error) {
+        console.log("Scraper Internal Error")
+      }
       console.log('Finished');
       console.log(new Date().toLocaleString());
     },
