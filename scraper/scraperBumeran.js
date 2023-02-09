@@ -124,15 +124,15 @@ const busquedaBumeran = async (search, location = '') => {
       } else {
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
-        browserDesc.close()
-        //console.log("next")
+        //browserDesc.close()
+        console.log("next")
       }
       //await browserDesc.close()
     }
     //console.log(items.name)
-    //console.log("Saving Jobs")
+    console.log("Saving Jobs")
     saveJobs(listLinks, items);
-    //console.log('Jobs saved');
+    console.log('Jobs saved');
     stop++;
     browser.close();
   }
