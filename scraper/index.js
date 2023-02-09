@@ -10,7 +10,7 @@ const cronJobScrapper = () => {
   console.log('Scraper Start with Cron')
   new cron.CronJob(
     // min hour date month day
-    '00 04 1-31 0-11 0-6',
+    '15 04 1-31 0-11 0-6',
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());

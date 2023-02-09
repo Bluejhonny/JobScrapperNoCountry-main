@@ -88,7 +88,7 @@ const busquedaBumeran = async (search, location = '') => {
       //console.log("getting description of -----> " + links)
       const browserDesc = await puppeteer.launch({
         headless: true,
-        timeout: 0,
+        timeout: 1800,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         //defaultViewport: false,
         //dumpio: true
@@ -151,9 +151,10 @@ const busquedaBumeran = async (search, location = '') => {
     // } catch (error) {
     //     console.log(error.message)
     // }
-    await browser.close();
+    //await browser.close();
     stop++;
   }
+  await browser.close();
   console.log('Busqueda Finalizada');
   // process.exit(13)//fix this
 };
