@@ -18,7 +18,7 @@ const busquedaBumeran = async (search, location = '') => {
     var url = 'https://www.bumeran.com.ve/empleos-busqueda-' + search + '.html';
 
     const page = await browser.newPage();
-    await page.setDefaultNavigationTimeout(0);
+    page.setDefaultNavigationTimeout(0);
 
     await page.goto(url, {
       waitUntil: 'load',
@@ -124,17 +124,17 @@ const busquedaBumeran = async (search, location = '') => {
       } else {
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
-        //browserDesc.close()
+        browserDesc.close()
         //console.log("next")
       }
-      await browserDesc.close()
+      //await browserDesc.close()
     }
     //console.log(items.name)
     //console.log("Saving Jobs")
     saveJobs(listLinks, items);
     //console.log('Jobs saved');
     stop++;
-    await browser.close();
+    browser.close();
   }
   
   console.log('Busqueda Finalizada');
