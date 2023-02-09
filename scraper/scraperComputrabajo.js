@@ -109,7 +109,7 @@ const busquedaComputrabajo = async (search, location = '') => {
 
     info.push(tempInfo);
   }
-  console.log(info)
+  //console.log(info)
   //Guardar Trabajos a la base de datos
   await saveJobs(listLinks, info);
   console.log('Jobs saved to the database');

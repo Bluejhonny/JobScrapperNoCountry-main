@@ -85,7 +85,7 @@ const busquedaBumeran = async (search, location = '') => {
       } catch (error) { }
 
       //entrar a los links y extraer la descripcion
-      console.log("getting description of -----> " + links)
+      //console.log("getting description of -----> " + links)
       const browserDesc = await puppeteer.launch({
         headless: true,
         timeout: 0,
@@ -118,21 +118,22 @@ const busquedaBumeran = async (search, location = '') => {
           description = description[0];
         }
       } catch (error) { }
-      console.log("saving Job")
+      //console.log("saving Job")
       if (name == 'Null') {
         continue;
       } else {
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
         browserDesc.close()
-        console.log("next")
+        //console.log("next")
       }
     }
-    console.log(items.name)
-    browser.close();
-
+    //console.log(items.name)
+    
+    //console.log("Saving Jobs")
     saveJobs(listLinks, items);
-    console.log('Jobs saved');
+    //.log('Jobs saved');
+
     // // Validar si la carpeta data existe, si no la crea.
     // const dir = fs.existsSync('./data')
     // if (!dir) fs.mkdirSync('./data');
@@ -150,6 +151,7 @@ const busquedaBumeran = async (search, location = '') => {
     // } catch (error) {
     //     console.log(error.message)
     // }
+    await browser.close();
     stop++;
   }
   console.log('Busqueda Finalizada');
@@ -157,4 +159,3 @@ const busquedaBumeran = async (search, location = '') => {
 };
 
 module.exports = { busquedaBumeran };
-//busquedaBumeran('backend', '')
