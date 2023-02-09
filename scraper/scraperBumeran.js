@@ -127,18 +127,18 @@ const busquedaBumeran = async (search, location = '') => {
         //browserDesc.close()
         //console.log("next")
       }
-      browserDesc.close()
+      await browserDesc.close()
     }
     //console.log(items.name)
     //console.log("Saving Jobs")
     saveJobs(listLinks, items);
     //console.log('Jobs saved');
     stop++;
-    browser.close();
+    await browser.close();
   }
   
   console.log('Busqueda Finalizada');
-  process.exit(13)//fix this
+  //process.exit(13)//fix this
 };
 
 module.exports = { busquedaBumeran };

@@ -17,8 +17,14 @@ const cronJobScrapper = () => {
 
       // await busquedaComputrabajo('frontend', '');
       // await busquedaComputrabajo('backend', '');
-      await busquedaBumeran('frontend', '');
-      await busquedaBumeran('backend', '');
+
+      try {
+        await busquedaBumeran('frontend', '');
+        await busquedaBumeran('backend', '');
+      } catch (error) {
+        console.log("Scraper Error")
+      }
+
 
 
       console.log('Finished');
