@@ -94,7 +94,7 @@ const busquedaBumeran = async (search, location = '') => {
         //dumpio: true
       });
       const pageDesc = await browserDesc.newPage();
-      await pageDesc.setDefaultNavigationTimeout(0);
+      pageDesc.setDefaultNavigationTimeout(0);
       try {
         if (links == 'Null') {
           description = 'Null';
@@ -138,7 +138,7 @@ const busquedaBumeran = async (search, location = '') => {
   }
   
   console.log('Busqueda Finalizada');
-  // process.exit(13)//fix this
+  process.exit(13)//fix this
 };
 
 module.exports = { busquedaBumeran };

@@ -10,15 +10,15 @@ const cronJobScrapper = () => {
   console.log('Scraper Start with Cron')
   new cron.CronJob(
     // min hour date month day
-    '30 05 1-31 0-11 0-6',
+    '00 18 1-31 0-11 0-6',
     async () => {
       console.log('Ejecutando...');
       console.log(new Date().toLocaleString());
 
-      await busquedaComputrabajo('frontend', '');
-      await busquedaComputrabajo('backend', '');
-      // await busquedaBumeran('frontend', '');
-      // await busquedaBumeran('backend', '');
+      // await busquedaComputrabajo('frontend', '');
+      // await busquedaComputrabajo('backend', '');
+      await busquedaBumeran('frontend', '');
+      await busquedaBumeran('backend', '');
 
 
       console.log('Finished');
