@@ -17,10 +17,14 @@ const cronJobScrapper = () => {
       try {
         await busquedaComputrabajo('frontend', '');
         await busquedaComputrabajo('backend', '');
+      } catch (error) {
+        console.log("Computrabajo Scraper Internal Error...")
+      }
+      try {
         await busquedaBumeran('backend', '');
         await busquedaBumeran('frontend', '');
-      } catch (error) {
-        console.log("Scraper Internal Error...")
+      } catch(error) {
+        console.log("Bumeran Scraper Internal Error...")
       }
       console.log('Finished');
       console.log(new Date().toLocaleString());
