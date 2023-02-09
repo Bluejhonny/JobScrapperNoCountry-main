@@ -9,7 +9,7 @@ const busquedaBumeran = async (search, location = '') => {
   while (stop < 1) {
     const browser = await puppeteer.launch({
       headless: true,
-      timeout: 1800,
+      timeout: 0,
       //defaultViewport: false,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
       //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
@@ -88,7 +88,7 @@ const busquedaBumeran = async (search, location = '') => {
       //console.log("getting description of -----> " + links)
       const browserDesc = await puppeteer.launch({
         headless: true,
-        timeout: 1800,
+        timeout: 0,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         //defaultViewport: false,
         //dumpio: true
