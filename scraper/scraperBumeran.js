@@ -129,32 +129,13 @@ const busquedaBumeran = async (search, location = '') => {
       }
     }
     //console.log(items.name)
-    
     //console.log("Saving Jobs")
     saveJobs(listLinks, items);
-    //.log('Jobs saved');
-
-    // // Validar si la carpeta data existe, si no la crea.
-    // const dir = fs.existsSync('./data')
-    // if (!dir) fs.mkdirSync('./data');
-
-    // // Escribir la informacion en archivos .json dentro de la carpeta data.
-    // try {
-    //     fs.appendFileSync(`./data/links_${search.replace(' ', '_')}_${crypto.randomUUID()}_${new Date().getTime()}.json`, JSON.stringify(listLinks));
-    // } catch (error) {
-    //     console.log(error.message)
-    // }
-
-    // try {
-    //     fs.appendFileSync(`./data/ofertas_${search.replace(' ', '_')}_${crypto.randomUUID()}_${new Date().getTime()}.json`, JSON.stringify(items));
-    //     console.log('saved')
-    // } catch (error) {
-    //     console.log(error.message)
-    // }
-    //await browser.close();
+    //console.log('Jobs saved');
     stop++;
+    await browser.close();
   }
-  await browser.close();
+  
   console.log('Busqueda Finalizada');
   // process.exit(13)//fix this
 };
