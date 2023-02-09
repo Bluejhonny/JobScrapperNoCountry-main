@@ -9,7 +9,7 @@ const busquedaBumeran = async (search, location = '') => {
   while (stop < 1) {
     const browser = await puppeteer.launch({
       headless: true,
-      timeout: 0,
+      timeout: 1800,
       //defaultViewport: false,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
       //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
@@ -133,7 +133,7 @@ const busquedaBumeran = async (search, location = '') => {
     saveJobs(listLinks, items);
     //console.log('Jobs saved');
     stop++;
-    await browser.close();
+    browser.close();
   }
   
   console.log('Busqueda Finalizada');

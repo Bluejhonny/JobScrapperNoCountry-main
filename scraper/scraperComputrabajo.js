@@ -114,23 +114,6 @@ const busquedaComputrabajo = async (search, location = '') => {
   await saveJobs(listLinks, info);
   console.log('Jobs saved to the database');
 
-  // // Validar si la carpeta data existe, si no la crea.
-  // const dir = fs.existsSync('./data')
-  // if (!dir) fs.mkdirSync('./data');
-
-  // // Escribir la informacion en archivos .json dentro de la carpeta data.
-  // try {
-  //     fs.appendFileSync(`./data/links_${search.replace(' ', '_')}_${crypto.randomUUID()}_${new Date().getTime()}.json`, JSON.stringify(listLinks));
-  // } catch (error) {
-  //     console.log(error.message)
-  // }
-
-  // try {
-  //     fs.appendFileSync(`./data/ofertas_${search.replace(' ', '_')}_${crypto.randomUUID()}_${new Date().getTime()}.json`, JSON.stringify(info));
-  // } catch (error) {
-  //     console.log(error.message)
-  // }
-
   await browser.close();
   console.log('done');
 };
