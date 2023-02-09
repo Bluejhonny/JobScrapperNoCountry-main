@@ -122,10 +122,9 @@ const busquedaBumeran = async (search, location = '') => {
       if (name == 'Null') {
         continue;
       } else {
-
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
-        browserDesc.close()
+        //browserDesc.close()
         console.log("next")
       }
     }
