@@ -141,7 +141,9 @@ const busquedaBumeran = async (search, location = '') => {
     console.log('Jobs saved');
     stop++;
     await browser.close();
+    console.log("closing browser...")
     resolve()
+    console.log("browser closed")
 
   }
   
