@@ -1,6 +1,4 @@
 const puppeteer = require('puppeteer');
-//const fs = require('fs');
-//const crypto = require('crypto');
 const { saveJobs } = require('../controllers/job.controller');
 
 const busquedaBumeran = async (search, location = '') => {
@@ -10,10 +8,8 @@ const busquedaBumeran = async (search, location = '') => {
     const browser = await puppeteer.launch({
       headless: true,
       timeout: 0,
-      //defaultViewport: false,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-      //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-      //dumpio: true
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      dumpio: true
     });
     var url = 'https://www.bumeran.com.ve/empleos-busqueda-' + search + '.html';
 
@@ -47,6 +43,7 @@ const busquedaBumeran = async (search, location = '') => {
           (el) => el.querySelector('h2').textContent,
           productHandle
         );
+        resolve()
       } catch (error) { }
 
       try {
@@ -54,6 +51,7 @@ const busquedaBumeran = async (search, location = '') => {
           (el) => el.querySelector('h3').textContent,
           productHandle
         );
+        resolve()
       } catch (error) { }
 
       try {
@@ -64,6 +62,7 @@ const busquedaBumeran = async (search, location = '') => {
             ).textContent,
           productHandle
         );
+        resolve()
       } catch (error) { }
 
       try {
@@ -74,6 +73,7 @@ const busquedaBumeran = async (search, location = '') => {
             ).textContent,
           productHandle
         );
+        resolve()
       } catch (error) { }
 
       try {
@@ -82,6 +82,7 @@ const busquedaBumeran = async (search, location = '') => {
           productHandle
         );
         links = 'https://www.bumeran.com.ve' + link;
+        resolve()
       } catch (error) { }
 
       //entrar a los links y extraer la descripcion
@@ -93,8 +94,10 @@ const busquedaBumeran = async (search, location = '') => {
         //defaultViewport: false,
         //dumpio: true
       });
+      resolve()
       const pageDesc = await browserDesc.newPage();
       pageDesc.setDefaultNavigationTimeout(0);
+      resolve()
       try {
         if (links == 'Null') {
           description = 'Null';
@@ -106,6 +109,7 @@ const busquedaBumeran = async (search, location = '') => {
           });
           const resultsSelector = `[id="section-detalle"] > div:nth-child(2)`;
           await pageDesc.waitForSelector(resultsSelector);
+          resolve()
           // Extract the results from the pageDesc.
           description = await pageDesc.evaluate((resultsSelector) => {
             return [...document.querySelectorAll(resultsSelector)].map(
@@ -115,6 +119,7 @@ const busquedaBumeran = async (search, location = '') => {
               }
             );
           }, resultsSelector);
+          resolve()
           description = description[0];
         }
       } catch (error) { }
@@ -124,7 +129,8 @@ const busquedaBumeran = async (search, location = '') => {
       } else {
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
-        //browserDesc.close()
+        await browserDesc.close()
+        resolve()
         console.log("next")
       }
       //await browserDesc.close()
@@ -134,7 +140,9 @@ const busquedaBumeran = async (search, location = '') => {
     saveJobs(listLinks, items);
     console.log('Jobs saved');
     stop++;
-    //browser.close();
+    await browser.close();
+    resolve()
+
   }
   
   console.log('Busqueda Finalizada');
