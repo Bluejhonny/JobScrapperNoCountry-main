@@ -3,8 +3,7 @@ const { saveJobs } = require('../controllers/job.controller');
 
 const busquedaBumeran = async (search, location = '') => {
   console.log(`Searching for ${search} in Bumeran`);
-  let stop = 0;
-  while (stop < 1) {
+  try {
     const browser = await puppeteer.launch({
       headless: true,
       timeout: 0,
@@ -12,7 +11,6 @@ const busquedaBumeran = async (search, location = '') => {
       // dumpio: true
     });
     var url = 'https://www.bumeran.com.ve/empleos-busqueda-' + search + '.html';
-
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(0);
 
@@ -30,14 +28,13 @@ const busquedaBumeran = async (search, location = '') => {
     for (const productHandle of productHandles) {
       let name = 'Null';
       let company = 'Null';
-      let location ='Venezuela';
+      let location = 'Venezuela';
       let type = 'Null';
       let links = 'Null';
       let description = 'Null';
       let source = 'Bumeran'
 
       // pass the single handle below
-
       try {
         name = await page.evaluate(
           (el) => el.querySelector('h2').textContent,
@@ -122,21 +119,20 @@ const busquedaBumeran = async (search, location = '') => {
         listLinks.push(links);
         await browserDesc.close()
       }
-      //await browserDesc.close()
     }
     //console.log(items.name)
     console.log("Saving Jobs")
     saveJobs(listLinks, items);
     console.log('Jobs saved');
-    stop++;
+
+  } catch (e) {
+    console.log(e)
+    console.log("Internal Error in Bumeran Scraper")
+  } finally {
     await browser.close();
-    console.log("closing browser...")
-    resolve()
-    console.log("browser closed")
+    console.log("Browser closed")
+    console.log('Busqueda Finalizada');
   }
-  
-  console.log('Busqueda Finalizada');
-  //process.exit(13)//fix this
 };
 
 module.exports = { busquedaBumeran };
