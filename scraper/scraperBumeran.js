@@ -10,6 +10,9 @@ const busquedaBumeran = async (search, location = '') => {
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
       // dumpio: true
     });
+
+
+
     var url = 'https://www.bumeran.com.ve/empleos-busqueda-' + search + '.html';
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(0);
@@ -132,6 +135,8 @@ const busquedaBumeran = async (search, location = '') => {
     // console.log("Closing Browser")
     // await browser.close();
     // console.log("Browser closed")
+    console.log("Checking browser")
+    if (browser && browser.process() != null) browser.process().kill('SIGINT');
     console.log('Busqueda Finalizada');
   }
 };
