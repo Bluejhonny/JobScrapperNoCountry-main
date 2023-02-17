@@ -132,13 +132,13 @@ const busquedaBumeran = async (search, location = '') => {
     console.log(e)
     console.log("Internal Error in Bumeran Scraper")
   } finally {
-    // console.log("Closing Browser")
-    // await browser.close();
-    // console.log("Browser closed")
-    console.log("Checking browser")
-    if (browser && browser.process() != null) browser.process().kill('SIGINT');
-    console.log('Busqueda Finalizada');
+    console.log("Closing Browser")
+    browser.close();
+    console.log("Browser closed")
+    // console.log("Checking browser")
+    // if (browser && browser.process() != null) browser.process().kill('SIGINT');
   }
+  console.log('Busqueda Finalizada');
 };
 
 module.exports = { busquedaBumeran };
