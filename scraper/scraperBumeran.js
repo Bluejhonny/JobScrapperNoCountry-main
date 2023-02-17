@@ -116,12 +116,14 @@ const busquedaBumeran = async (search, location = '') => {
       } catch (error) { }
       //console.log("saving Job")
       if (name == 'Null') {
+        await browserDesc.close()
         continue;
       } else {
         items.push({ name, company, location, type, links, description, source });
         listLinks.push(links);
         await browserDesc.close()
       }
+      
     }
     //console.log(items.name)
     console.log("Saving Jobs")
@@ -133,7 +135,7 @@ const busquedaBumeran = async (search, location = '') => {
     console.log("Internal Error in Bumeran Scraper")
   } finally {
     console.log("Closing Browser")
-    browser.close();
+    await browser.close();
     console.log("Browser closed")
     // console.log("Checking browser")
     // if (browser && browser.process() != null) browser.process().kill('SIGINT');
